@@ -11,7 +11,7 @@ Remain that, given the number of vertices p, the colored graphs representing mod
 Users can find the scripts that implement the procedure described in the section 4.1 and the similar approach applying the submodel relation.
 More specifically:
 
-- **backward_CGM_PD_submod.R**: implements the backward stepwise procedure for the class of RCON models for paired data adapting the partial ordering &#x227C;<sub>&tau;</sub>. The step-by-step idea is shown in the section 4.1.
+- **backward_CGM_PD_tau.R**: implements the backward stepwise procedure for the class of RCON models for paired data adapting the partial ordering &#x227C;<sub>&tau;</sub>. The step-by-step idea is shown in the section 4.1.
 
 - **backward_CGM_PD_submod.R**: implements the backward stepwise procedure for the class of RCON models for paired data equipped by the submodel relation which is induced by the ordering &#x227C;<sub>&#x1D46A;</sub> .
 
