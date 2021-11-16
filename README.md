@@ -3,11 +3,7 @@
 R code repository for scripts implementing the algorithm discussed in:
 > [Working paper:] *Model selection for colored graphical models for paired data*
 
-h<sub>&theta;</sub>(x) = &theta;<sub>o</sub>x + &theta;<sub>1</sub>x&#x1D543;
-
-(&#x1D543;, E, &#x1D53C;<sub>L</sub>)
-
-Remain that, given the number of vertices p, the colored graphs representing models for paired data are defined by (&#x1D543;, E, &#x1D53C;<sub>L</sub>). In practice, a such colored graph is translated by a list of a vector L.as, the two-column matrices E and E.as, respectively.
+Remain that, given the number of vertices p, the colored graphs representing models for paired data are defined by (&#x1D543;, E, &#x1D53C;<sub>L</sub>). In practice, a such colored graph is displayed by a list of a vector L.as, the two-column matrices E and E.as, respectively.
 
 ## Contents
 
@@ -38,10 +34,10 @@ Users can find **supplementary_functions.R** that contains R functions supportin
 
 
 ### Simulation script
-**simulation()** contains the reproducible code for results reported in **Table 1** of [1].
+**simulation.R** contains the reproducible code for results reported in **Table 1**. Multiple different scenarios in the simulation settings are described.
 
-By running the script **fit_sgl_example.R**, the input simulated data (**input_example.RData**) is automatically loaded, and the scripts in the main folder sourced. The results can be visualized by typing in R the name of the object *summary_perf* in the console.
+By running the script, the input simulated data (**input_simdata.RData**) is automatically loaded, and the needed functions the main scripts and supplementary script are sourced.
 
-For reproduciblity, users can also find the a saved version of the output if one wants to avoid running the code again (**output_example.RData**).
+For reproduciblity, users can also find the a saved version of the output if one does not want to spend time of running the code again (**output_results.RData**).
 
 ---
