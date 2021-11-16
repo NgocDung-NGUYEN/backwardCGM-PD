@@ -3,10 +3,11 @@
 R code repository for scripts implementing the algorithm discussed in:
 > [Working paper:] *Model selection for colored graphical models for paired data*
 
-h<sub>&theta;</sub>(x) = &theta;<sub>o</sub>x + &theta;<sub>1</sub>x&‌tau;&‌#x2265;
+h<sub>&theta;</sub>(x) = &theta;<sub>o</sub>x + &theta;<sub>1</sub>x&#x1D543;
 
-Remain that, given the number of vertices p, the colored graphs representing models for paired data are defined by
- $(\mathbb{L}, E, \mathbb{E}_{L})$. In practice, a such colored graph is translated by a list of a vector L.as, the two-column matrices E and E.as, respectively.
+(&#x1D543;, E, &#x1D53C;<sub>L</sub>)
+
+Remain that, given the number of vertices p, the colored graphs representing models for paired data are defined by (&#x1D543;, E, &#x1D53C;<sub>L</sub>). In practice, a such colored graph is translated by a list of a vector L.as, the two-column matrices E and E.as, respectively.
 
 ## Contents
 
@@ -14,9 +15,9 @@ Remain that, given the number of vertices p, the colored graphs representing mod
 Users can find the scripts that implement the procedure described in the section 4.1 and the similar approach applying the submodel relation.
 More specifically:
 
-- **backward_CGM_PD_submod.R**: implements the backward stepwise procedure for the class of RCON models for paired data adapting the partial ordering $\preceq_{\tau}$. The step-by-step idea is shown in the section 4.1.
+- **backward_CGM_PD_submod.R**: implements the backward stepwise procedure for the class of RCON models for paired data adapting the partial ordering &#x227C;<sub>&tau;</sub>. The step-by-step idea is shown in the section 4.1.
 
-- **backward_CGM_PD_submod.R**: implements the backward stepwise procedure for the class of RCON models for paired data equipped by the submodel relation which is induced by the ordering $\preceq_{\mathcal{C}}$.
+- **backward_CGM_PD_submod.R**: implements the backward stepwise procedure for the class of RCON models for paired data equipped by the submodel relation which is induced by the ordering &#x227C;<sub>&#x1D46A;</sub> .
 
 ---
 
@@ -25,10 +26,10 @@ Users can find **supplementary_functions.R** that contains R functions supportin
 
 - **intersectMat()**: returns the intersection of two edge sets;
 - **matdiff()**: returns the difference of two edge sets;
-- **tau()**, **tauMat()**: returns $\tau(A)$ and $\tau(E)$ where $A$ is a set of vertices and $E$ is the set of edges. respectively;
-- **vLabel()**: returns the labels of two homologous sets of vertices $L$ and $R$ where $L = \{"L1",\ldots, "Lq"\}, ~R = \{"R1",\ldots, "Rq"\}$, and $q = p/2$;
-- **fullEdges**: returns $F_{V}, F_{L}, F_{R}$, and $F_{T}$ when $p$ is given;
-- **outEdges()**: returns $E_{L}, E_{R}, E_{T}$, and $E_{T} \cap \tau(E_{R})$ when the edge set $E$ is given;
+- **tau()**, **tauMat()**: returns &tau;(A) and &tau;(E) where A is a set of vertices and E is the set of edges. respectively;
+- **vLabel()**: returns the labels of two homologous sets of vertices L and R where L = {"L1",..., "Lq"}, R = {"R1",..., "Rq"}, and q = p/2;
+- **fullEdges**: returns F<sub>V</sub>, F<sub>L</sub>, F<sub>R</sub>, and F<sub>T</sub> when p is given;
+- **outEdges()**: returns E<sub>L</sub>, E<sub>R</sub>, E<sub>T</sub>, and E<sub>L</sub> &cap; &tau;(E<sub>R</sub>) when the edge set E is given;
 - **pval.function()**: returns p-values of the likelihood ratio test of a model relative to the saturated model;
 - some other functions that display the visualization from the input of colored graph.
 
