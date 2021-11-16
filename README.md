@@ -1,9 +1,9 @@
 # *backwardCGM-PD*: **backward** stepwise procedure for **C**olored **G**raphical **M**odels for **P**aired **D**ata
 
-R code repository for scripts implementing the algorithm discussed in:
+R code repository for scripts implements the algorithm discussed in:
 > [Working paper:] *Model selection for colored graphical models for paired data*
 
-Remain that, given the number of vertices p, the colored graphs representing models for paired data are defined by (&#x1D543;, E, &#x1D53C;<sub>L</sub>). In practice, a such colored graph is displayed by a list of a vector L.as, the two-column matrices E and E.as, respectively.
+Remain that, given the number of vertices p, the colored graphs representing models for paired data are defined by (&#x1D543;, E, &#x1D53C;<sub>L</sub>). In R, a such colored graph is displayed by a list of a vector L.as, the two-column matrices E and E.as, respectively.
 
 ## Contents
 
