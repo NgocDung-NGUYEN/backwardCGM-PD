@@ -7,7 +7,7 @@ R code repository for scripts implementing the algorithm discussed in:
 ![equation](https://latex.codecogs.com/pdf.latex?(\mathbb{L},&space;E,&space;\mathbb{E}_{L})
 
 Remain that, given the number of vertices $p$, the colored graphs representing models for paired data are defined by
-- <img src="https://latex.codecogs.com/gif.latex? (\mathbb{L}, E, \mathbb{E}_{L}) " />
+- <img src="https://latex.codecogs.com/pdf.latex?(\mathbb{L},&space;E,&space;\mathbb{E}_{L} " />
  $(\mathbb{L}, E, \mathbb{E}_{L})$. In practice, a such colored graph is translated by a list of a vector L.as, the two-column matrices E and E.as, respectively.
 
 ## Contents
