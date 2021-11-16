@@ -3,8 +3,9 @@
 R code repository for scripts implementing the algorithm discussed in:
 > [Working paper:] *Model selection for colored graphical models for paired data*
 
+h<sub>&theta;</sub>(x) = &theta;<sub>o</sub>x + &theta;<sub>1</sub>x&‌tau;&‌#x2265;
 
-Remain that, given the number of vertices $p$, the colored graphs representing models for paired data are defined by
+Remain that, given the number of vertices p, the colored graphs representing models for paired data are defined by
  $(\mathbb{L}, E, \mathbb{E}_{L})$. In practice, a such colored graph is translated by a list of a vector L.as, the two-column matrices E and E.as, respectively.
 
 ## Contents
