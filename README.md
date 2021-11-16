@@ -3,9 +3,8 @@
 R code repository for scripts implementing the algorithm discussed in:
 > [Working paper:] *Model selection for colored graphical models for paired data*
 
-![](https://latex.codecogs.com/svg.latex?y%3Dx%5E2)
 
-![equation](https://latex.codecogs.com/png.latex?(\mathbb{L},&space;E,&space;\mathbb{E}_{L})
+![equation](https://latex.codecogs.com/pdf.latex?(\mathbb{L},&space;E,&space;\mathbb{E}_{L})
 
 Remain that, given the number of vertices $p$, the colored graphs representing models for paired data are defined by
 - <img src="https://latex.codecogs.com/gif.latex? (\mathbb{L}, E, \mathbb{E}_{L}) " />
