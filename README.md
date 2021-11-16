@@ -3,8 +3,12 @@
 R code repository for scripts implementing the algorithm discussed in:
 > [Working paper:] *Model selection for colored graphical models for paired data*
 
+```math
+SE = \frac{\sigma}{\sqrt{n}}
+```
+
 Remain that, given the number of vertices $p$, the colored graphs representing models for paired data are defined by
-- <img src="https://latex.codecogs.com/gif.latex?O_t= (\mathbb{L}, E, \mathbb{E}_{L}) " /> 
+- <img src="https://latex.codecogs.com/gif.latex? (\mathbb{L}, E, \mathbb{E}_{L}) " />
  $(\mathbb{L}, E, \mathbb{E}_{L})$. In practice, a such colored graph is translated by a list of a vector L.as, the two-column matrices E and E.as, respectively.
 
 ## Contents
