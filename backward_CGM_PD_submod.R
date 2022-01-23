@@ -1,38 +1,40 @@
-#####################################################################################
-###                            AUTHOR: DUNG NGOC NGUYEN                           ###
-### [Working paper]: Model selection for colored graphical models for paired data ###
-#####################################################################################
+#########################################################################################
+###                              AUTHOR: DUNG NGOC NGUYEN                             ###
+### [Doctoral research]: Model selection for colored graphical models for paired data ###
+#########################################################################################
 
-### A colored graph is composed by components |L in (3.7), the edge set E, |E_L in (3.6)
-### in R environment, we translate a colored graph by a corresponding list of L.as, E, E.as
+### GREEDY SEARCH ON THE MODEL INCLUSION LATTICE (SECTION 3.4) ###
+
+### A colored graph is composed by components L, E, and E_L.
+### In R environment, we encode a colored graph respectively by a list of L.as, E, E.as,
+### where L.as is a vector of integers from 1 to p, and E, E_L are two-column matrices with 
+### each row corresponding to an edge in the graph, and p is the number of vertices.
+
+### For the model selection procedure on the model inclusion lattice in Section 3.4.1, 
+### we have written the function backwardsubmodel() which employs the
+### backward elimination stepwise approach for the family of RCON models for paired data 
+### with the model inclusion order defined in Section 1.2.4.
 
 
-### The model selection procedure for the class of colored graphical models for paired data 
-### induced by the submodel relation is described by backwardsubmodel(). Then, all the 
-### operations we applied here are based on the submodel relation.
+### Furthermore, to specify more efficiently the set of neighbors N' described at Step 3.c,
+### we wrote the function meet.operation.submodel() which takes the meet operation between 
+### the chosen model M* at current step and each (accepted) models in the previous step by. 
+### The meet between two models in the model inclusion lattice is identified in Section 1.2.4.
 
 
-### The neighborhood set N' contains models which are submodels of the chosen model 
-### in the previous step and they should not be contained by any models in the rejected set R.
-### To find this neighborhood set more efficiently, in practise, we do differently
-### by applying the meet operation between the chosen model at current step and 
-### each (accepted) models in the previous step. We create meet.operation.submodel() to do that.
+### The procedure can be summarized as follows:
 
-### We apply the same manner of the procedure (like the approach in backward_CGM_PD_tau.R) to
-### the algorithm using submodel relation. It allows us in comparison of the results and running
-### time between procedures applied two orderings, tau and submodel.
+# (1) # From the saturated model M*, we find the set of neighbors of M* by Step 3.a.
 
-### From the saturated model, we consider all its nearest neighboors based on the submodel relation
-### and create a vector ii to label for each model, after testing, 
-### ii[K] = 0 if the model m_K is rejected, otherwise, ii[K] = 1.
+# (2) # After testing, we create a vector ii of indices 0 and 1 such that it assigns 0 for 
+### rejected models and 1 for accepted models.
 
-### Starting from the saturated model m*, in the iterative manner, at each stage, 
-### the neighboor models are the models obtained by taking the meet operation
-### between m* and m[ii == 1] for m in nei(). After testing, we update ii and 
-### update m* as the best model with the highest pvalue.
+# (3) # Update M* by choosing the best model among models having indices 1 in vector ii.
 
-### Repeat the procedure until all indices in ii are 0; or, iterative manner
-### exceeds the given maximum number of iterations.
+# ... # Going further stages, # (1) # is replaced by specifying the set of neighbors of M*
+### through meet.operation.submodel() with inputs M* and models having index 1 in ii.
+### Then, we go to # (2) # and # (3) # and repeat the procedure until the stop condition holds.
+
 
 ### backwardsubmodel() returns a list of locally optimal model, number of iterations, 
 ### number of tested models starting from the iteration.
@@ -167,9 +169,9 @@ nei <- function(p, m){
 
 
 
-###=========================================================================###
-###=== PERFORMANCE OF THE BACKWARD PROCEDURE USING THE SUBMODEL RELATION ===###
-###=========================================================================###
+###===============================================================================###
+###=== THE BACKWARD ELIMINATION STEPWISE PROCEDURE FOR MODEL INCLUSION LATTICE ===###
+###===============================================================================###
 
 ### INPUT: 
 #         df: a data frame
@@ -370,3 +372,6 @@ backwardsubmodel <- function(df,
   }
   return(list(model = m, iterations = it, no.models = count.models))
 }
+
+## compile the function
+backwardsubmodelc <- compiler::cmpfun(backwardsubmodel)

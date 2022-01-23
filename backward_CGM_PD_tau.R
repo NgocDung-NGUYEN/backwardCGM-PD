@@ -1,61 +1,58 @@
-#####################################################################################
-###                            AUTHOR: DUNG NGOC NGUYEN                           ###
-### [Working paper]: Model selection for colored graphical models for paired data ###
-#####################################################################################
+#########################################################################################
+###                              AUTHOR: DUNG NGOC NGUYEN                             ###
+### [Doctoral research]: Model selection for colored graphical models for paired data ###
+#########################################################################################
 
-### A colored graph is composed by components |L in (3.7), the edge set E, |E_L in (3.6)
-### in R environment, we translate a colored graph by a corresponding list of L.as, E, E.as
+### GREEDY SEARCH ON THE TWIN LATTICE (SECTION 3.3) ###
 
-
-### The model selection procedure in the section 4.1 is described by backwardCGMpd().
-### This adapts the idea of backward method in the stepwise approach for the space of RCON models for paired data
-### equipped by the partial ordering "tau" defined in the section 3.2. Then, all the operations
-### we applied here are induced by the ordering "tau".
+### A colored graph is composed by components L, E, and E_L.
+### In R environment, we encode a colored graph respectively by a list of L.as, E, E.as,
+### where L.as is a vector of integers from 1 to p, and E, E_L are two-column matrices with 
+### each row corresponding to an edge in the graph, and p is the number of vertices.
 
 
-### The neighborhood set N' contains models which are submodels of the chosen model 
-### in the previous step and they should not be contained by any models in the rejected set R.
-### To find this neighborhood set more efficiently, in practise, we do differently
-### by applying the meet operation between the chosen model at current step and 
-### each (accepted) models in the previous step. We create meet.operation() to do that 
-### by making the intersection of sets L.as, E, E.as between two models.
+### For the model selection procedure for twin lattice in Section 3.3.1, we have written
+### the function backwardCGMpd() which employs the backward elimination stepwise approach
+### for the family of RCON models for paired data with the twin order "tau" defined in Section 2.4.2.
+### Then, all the operations are induced by the order "tau".
 
-### From the saturated model, we split its neighborhoood set into 2 layers, upper and lower layers.
-### layer1() and layer2() are aimed to find the models in upper and lower layers, respectively,
-### from the saturated model.
 
-# (1) #
-### For the upper layer, we create a vector ii1 to label for each model, after testing, 
-### ii1[K] = 0 if the model m_K is rejected, otherwise, ii1[K] = 1.
+### Furthermore, to specify more efficiently the sets of neighbors N1' and N2' for the upper layer
+### and the lower layer described at Steps 4.c and 5.c, respectively, we wrote the function
+### meet.operation() which takes the meet operation between the chosen model M* at current step
+### and each (accepted) models in the previous step by the twin order. The meet between two models 
+### in the twin lattice is identified in Theorem 2.6.
 
-# (2) #
-### For each model m_K in the upper layer satisfying the condition in step 5.a, we will have 
-### two corresponding models m_K1 and m_K2 in lower layer. We also create a vector ii2 to label
-### for each model in this layer, before testing, we update ii2 by applying the following rule:
-### if ii1[K] = 1 then ii2[K1] =  ii2[K2] = 0. Then, we apply the testing for models where (ii2 != 0).
-### Update ii2 similarly, ii2[M] = 0 if the model m_M is rejected, otherwise, ii2[M] = 1.
 
-### Going to further stage of the procedure, we might consider models 
-### (determined by the fourth point in step 4.a) where # (1) # does not consider them.
-### Therefore, to unify the procedure in # (1), (2) #, we apply layer3() to determine models
-### which are respectively removed one pair of edges (e, tau(e)) from the full model where
-### e != tau(e). For K > p, if ii1[K] = 0 then ii3[K'] = 0 where K'= K-p the corresponding index
-### in layer3(). We apply the test for models which have indices in ii3 != 0 and update ii3 
-### similarly in # (1), (2) #.
+### The procedure can be summarized as follows:
 
-### Starting from the saturated model m*, in the iterative manner, at each stage, 
-### the neighboor models in upper layer are the models obtained by taking the meet operation
-### between m* and m[ii1 == 1] for m in layer1(). Moreover, if m* satisfies 4th condition in 4.a,
-### then m* ^ m[ii3 == 1], for CORRESPONDING m in layer3(). After testing, we update ii1 and ii3,
-### and choose the temporary best model, called temp.m1.
+# (1) # From the saturated model M*, we find the set of neighbors of M* by Steps 4.a and 5.a 
+### and split it into 2 layers, upper and lower, by functions layer1() and layer2(), respectively.
 
-### Next, the neighboor models in lower layer of m* are the models obtained by taking
-### the meet operation between m* and m[ii2 == 1] for m in layer2() then update ii2 and
-### update m* by comparing the best accepted model in layer2() and temp.m1.
+# (2) # For the upper layer:
+### after testing, we create a vector ii1 of indices 0 and 1 such that it assigns 
+### 0 for rejected models and 1 for accepted models.
 
-### Repeat the procedure until all indices in ii1, ii2, ii3 are 0; or, iterative manner
-### exceeds the given maximum number of iterations.
+# (3) # For the lower layer:
+### we create a vector ii2 such that for each model having symmetric twin edges in the upper layer
+### that is accepted, the corresponding models in the lower layer are assigned to 0, 
+### and 1 for others. Then, we only test models in the lower layer having the index 1 and 
+### update the vector ii2 by 0 for rejected models.
 
+# (4) # Update M* by choosing the best model among models having indices 1 in vectors ii1 and ii2.
+
+# ... # Going further stages, # (1) # is replaced by specifying the sets of neighbors of M* 
+### of the upper and lower layers through meet.operation() with inputs M* and models having 
+### index 1 in ii1 and ii2, respectively. Then, we go to # (2) #, # (3) #, and # (4) # 
+### and repeat the procedure until the stop condition holds.
+
+
+#=============================================================================#
+
+### Here, we note that, since the neighborhood of the sarturated models is determined by
+### 3 first points in Step 4.a, then for further steps, we wrote layer3() to indicate models
+### in the last point of Step 4.a and apply the same manner in # (2), (3) #. layer3() is applied
+### when M* has symmetric twin edges.
 
 ### backwardCGMpd() returns a list of locally optimal model, number of iterations, 
 ### number of tested models starting from the iteration.
@@ -78,7 +75,7 @@ source("supplementary_functions.R")
 
 
 ###========================================================================###
-###==================== MEET OPERATION IN THEOREM 3.1 =====================###
+###==================== MEET OPERATION IN THEOREM 2.6 =====================###
 ###========================================================================###
 
 ### INPUT: 
@@ -112,7 +109,7 @@ meet.operation <- function(m1, m2){
 
 
 ###========================================================================###
-###================== NEIGHBORHOOD SET IN UPPER LAYER =====================###
+###================== SET OF NEIGHBORS IN UPPER LAYER =====================###
 ###========================================================================###
 
 ### INPUT: 
@@ -151,7 +148,7 @@ layer1 <- function(p, m){
 
 
 ###========================================================================###
-###================== NEIGHBORHOOD SET IN LOWER LAYER =====================###
+###================== SET OF NEIGHBORS IN LOWER LAYER =====================###
 ###========================================================================###
 
 ### INPUT: 
@@ -189,7 +186,7 @@ layer2 <- function(p, m, ind.R){
 
 
 ###========================================================================###
-###========================= NEIGHBORHOOD SET 3 ===========================###
+###============ SET OF MODELS IN THE LAST POINT OF STEP 4.a ===============###
 ###========================================================================###
 
 ### INPUT: 
@@ -222,7 +219,7 @@ layer3 <- function(p, m, ind.A){
 
 
 ###========================================================================###
-###= PERFORMANCE OF THE BACKWARD PROCEDURE USING THE PARTIAL ORDERING TAU =###
+###== THE BACKWARD ELIMINATION STEPWISE PROCEDURE FOR THE TWIN LATTICE  ===###
 ###========================================================================###
 
 ### INPUT: 
@@ -434,3 +431,6 @@ backwardCGMpd <- function(df,
   }
   return(list(model = m, iterations = it, no.models = count.models))
 }
+
+## compile the function
+backwardCGMpdc <- compiler::cmpfun(backwardCGMpd)
