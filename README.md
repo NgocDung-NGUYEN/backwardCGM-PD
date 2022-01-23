@@ -32,14 +32,14 @@ Users can find **supplementary_functions.R** that contains R functions supportin
 ---
 
 
-### Simulation script 
+### Simulation script file
 **simulation.R** contains the reproducible code for recorded results in **Table 3.2**. Multiple different scenarios in the simulation settings are described.
 
-By running the script, the input simulated data (**input_simdata.RData**) is automatically loaded, and the needed functions, the main scripts and supplementary script are sourced.
+By running the script, the needed functions, the main scripts and supplementary script are sourced.
 
 For reproduciblity, users can also find the a saved version of the output in .RData format of **simulation_results** file and simulated data in **simulated-data** if one does not want to spend time of running the code again.
 
 ---
 
-### Application to fMRI script 
+### Application script file
 **analysis-fMRI.R** contains commands for analyzed colored graphs selected from the backward elimination stepwise procedure on the twin lattice for real data with 36 variables. The outputs can be found in .RData format of **output-fMRI** file.
