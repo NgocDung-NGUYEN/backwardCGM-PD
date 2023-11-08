@@ -1,7 +1,8 @@
-#####################################################################################
-###                            AUTHOR: DUNG NGOC NGUYEN                           ###
-### [Working paper]: Model selection for colored graphical models for paired data ###
-#####################################################################################
+######################################################################################
+###                              AUTHOR: DUNG NGOC NGUYEN                          ###
+#### Exploration of the search space of Gaussian graphical models for paired data ####
+######################################################################################
+
 
 ### A colored graph is composed by components |L in (3.7), the edge set E, |E_L in (3.6)
 ### in R environment, we translate a colored graph by a corresponding list of L.as, E, E.as
