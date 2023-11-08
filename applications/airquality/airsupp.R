@@ -69,68 +69,6 @@ formation.matrix <- function(p, pdsets, pdmat){
 }
 
 
-###=============================================================###
-###================= PLOT PD-CGs from MATRIX ===================###
-###=============================================================###
-
-plotG <- function(matrix, p, pvalue){
-  twos <- which(matrix == 2, arr.ind = TRUE)
-  twos <- twos[twos[,1] >= twos[,2],]
-  
-  zeros <- which(matrix == 0, arr.ind = TRUE)
-  zeros <- zeros[zeros[,1] > zeros[,2],]
-  
-  ones <- which(matrix == 1, arr.ind = TRUE)
-  ones.sm <- ones[ones[,1] < ones[,2],]
-  ones.ve <- ones[ones[,1] == ones[,2],]
-  
-  colnames(ones.ve) <- colnames(ones.sm) <- colnames(zeros) <- colnames(twos) <- NULL
-  ones.twin <- outEdges(ones.sm, dim(data.res)[2])$TE
-  ones.twin <- rbind(ones.twin, tauMat(ones.twin, p))
-  ones.twin <- rbind(ones.twin, ones.ve)
-  
-  only.ones <- matdiff(ones.sm, ones.twin)$val
-  
-  only.ones[ , c(1,2)] <- only.ones[ , c(2,1)] 
-  ones.twin[ , c(1,2)] <- ones.twin[ , c(2,1)] 
-  
-  if(!is.null(only.ones) | length(only.ones) > 0){
-    only.ones[,2] <- -only.ones[,2]
-  }
-  
-  if(!is.null(ones.twin) | length(ones.twin) > 0){
-    ones.twin[,2] <- -ones.twin[,2]
-  }
-  
-  if(!is.null(twos) | length(twos) > 0){
-    twos[,2] <- -twos[,2]
-  }
-  
-  #Plotting
-  par(mar=c(0,0,1,0), bty="n", pch="O", lty=2)
-  
-  g <- plot(c(-1,ncol(matrix)), c(0,-nrow(matrix)-1), type="n", 
-            xlab=NA, ylab=NA, asp=1)
-  
-  lines(c((ncol(matrix)+1)/2,(ncol(matrix)+1)/2), 
-        c(nrow(matrix),-nrow(matrix)-1), 
-        type = "l", lty=1, col = "black")
-  
-  lines(c(0, ncol(matrix)+1), 
-        c(-(nrow(matrix)+1)/2, -(nrow(matrix)+1)/2), 
-        type = "l", lty=1, col = "black")
-  
-  points(only.ones, pch = 15, cex = 3, col = "black")
-  points(ones.twin, pch = 19, cex = 3, col = "black")
-  points(twos, pch = 21, cex = 3, col = "black", bg = "lightgray")
-  
-  if(!is.null(pvalue)){
-    text(2, -nrow(matrix) + 2, paste0("pvalue = ", pvalue))
-  }
-  
-  return(g)
-}
-
 ###============================================================================###
 ###======== COMPUTE pvalue WITH INITIAL VALUES OF CONCENTRATION MATRIX ========###
 ###============================================================================###
