@@ -42,4 +42,7 @@ For reproduciblity, users can also find the a saved version of the output in .RD
 ---
 
 ### Application script file
-**analysis-fMRI.R** contains commands for analyzed colored graphs selected from the backward elimination stepwise procedure on the twin lattice for real data with 36 variables. The outputs can be found in .RData format of **output-fMRI** file.
+**analysis-fMRI.R** contains commands for analyzed coloured graphs selected from the backward elimination stepwise procedure on the twin lattice for real data with 36 variables. The outputs can be found in .RData format of **output-fMRI** file.
+
+**airquality.r** contains commands for the comparison of our greedy search procedure with the graphical lasso for paired data (pdglasso) method of Ranciati and Roverato (2023), with special attention to the role played by the scale of the variables. The methods are applied to an Air Quality dataset containing average hourly measurements from a multi-sensor gas device for one year (De Vito et al., 2008). The data and additional details can be found at https://archive.ics. uci.edu/ml/datasets/Air+Quality. We consider 6 variables, relative to the 4 substances CO, C6H6, NO2, O3, and the 2 meteorological measurements RH (relative humidity) and AH (absolute humidity). In order to analyse the different behaviour during the night and day hours, for every day the measure at 1am is matched to that at 1pm so that the number of variables is 12. The dataset obtained after removing missing values is made up of 373 observations, and we model the residual structure of a lag-1 autoregression model (Epskamp et al., 2018).
+The outputs can be found in .RData format of **airresults** file.
