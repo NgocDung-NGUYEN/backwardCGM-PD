@@ -1,21 +1,9 @@
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
 ####################################################################################
 ###                             AUTHOR: DUNG NGOC NGUYEN                         ###
 ### Exploration of the search space of Gaussian graphical models for paired data ###
 ####################################################################################
-=======
->>>>>>> Stashed changes
-######################################################################################
-###                              AUTHOR: DUNG NGOC NGUYEN                          ###
-#### Exploration of the search space of Gaussian graphical models for paired data ####
-######################################################################################
 
-<<<<<<< Updated upstream
-=======
->>>>>>> 9430409e9c93f4fa813a54d04e35488a649a2d4e
->>>>>>> Stashed changes
 
 ### GREEDY SEARCH ON THE MODEL INCLUSION LATTICE (SECTION 3.4) ###
 
