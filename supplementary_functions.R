@@ -1,21 +1,9 @@
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
+
 ####################################################################################
 ###                            AUTHOR: DUNG NGOC NGUYEN                          ###
 ### Exploration of the search space of Gaussian graphical models for paired data ###
 ####################################################################################
-=======
->>>>>>> Stashed changes
-######################################################################################
-###                              AUTHOR: DUNG NGOC NGUYEN                          ###
-#### Exploration of the search space of Gaussian graphical models for paired data ####
-######################################################################################
 
-<<<<<<< Updated upstream
-=======
->>>>>>> 9430409e9c93f4fa813a54d04e35488a649a2d4e
->>>>>>> Stashed changes
 
 ### A colored graph is composed by components |L in (3.7), the edge set E, |E_L in (3.6)
 ### in R environment, we translate a colored graph by a corresponding list of L.as, E, E.as
