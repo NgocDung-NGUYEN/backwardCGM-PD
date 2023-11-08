@@ -1,8 +1,21 @@
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+####################################################################################
+###                            AUTHOR: DUNG NGOC NGUYEN                          ###
+### Exploration of the search space of Gaussian graphical models for paired data ###
+####################################################################################
+=======
+>>>>>>> Stashed changes
 ######################################################################################
 ###                              AUTHOR: DUNG NGOC NGUYEN                          ###
 #### Exploration of the search space of Gaussian graphical models for paired data ####
 ######################################################################################
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> 9430409e9c93f4fa813a54d04e35488a649a2d4e
+>>>>>>> Stashed changes
 
 ### A colored graph is composed by components |L in (3.7), the edge set E, |E_L in (3.6)
 ### in R environment, we translate a colored graph by a corresponding list of L.as, E, E.as
@@ -51,7 +64,7 @@
 
 
 ### LOAD MULTIPLE PACKAGES AT ONCE
-load_pkg <- rlang::quos(igraph, gRc, tictoc, foreach)
+load_pkg <- rlang::quos(igraph, gRc, tictoc, foreach, pdglasso)
 
 invisible(lapply(lapply(load_pkg, rlang::quo_name),
                  library,
@@ -352,7 +365,7 @@ rcox.lists <- function(p, g){
   return(list(v.list = v, e.list = e))
 }
 
-
+g <- list(L.as = c(1,4), E = fullEdges(8)$FV, E.as = fullEdges(8)$FL)
 ###========================================================================###
 ###== P-VALUES FROM THE LIKELIHOOD RATIO TEST RELATIVE TO THE FULL MODEL ==###
 ###========================================================================###
