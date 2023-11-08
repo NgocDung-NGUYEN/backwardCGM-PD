@@ -46,7 +46,6 @@ GP <- pdColG.get(mod.P$model)
 
 #------------------------------------------------------------------------#
 ### compute p-values of models based on the log-likelihood ratio test
-p <- ncol(data.res)
 q <- p/2
 Sig <- var(data.res)
 vnames <- c(paste0("L", 1:q, sep=""), paste("R", 1:q, sep=""))
