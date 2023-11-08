@@ -1,6 +1,6 @@
 ######################################################################################
 ###                              AUTHOR: DUNG NGOC NGUYEN                          ###
-### [Ph.D. research]: Model selection for colored graphical models for paired data ###
+#### Exploration of the search space of Gaussian graphical models for paired data ####
 ######################################################################################
 
 ### LOAD MULTIPLE PACKAGES AT ONCE
